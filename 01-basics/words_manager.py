@@ -11,3 +11,13 @@ class WordsManager:
     def check_word(self, word):
        if word in data.words_5_letters:
            return True
+
+    def user_input(self):
+        while True:
+            word = input("enter a word: ")
+            if type(word) != str or len(word) != 5:
+                print("Invalid input")
+                continue
+            else:
+                return word.lower()
+
