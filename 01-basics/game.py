@@ -7,17 +7,15 @@ attempt = 6
 print(hidden_word)
 
 while attempt > 0:
-    print(attempt)
+    print(f'You have {attempt} tries')
     guess_word = w.user_input()
-    if w.check_word(guess_word):
-        if hidden_word == guess_word:
-            print("You guessed it!")
-            break
-        for correct_letter, letter in zip(hidden_word, guess_word):
-            if letter == correct_letter:
-                print(letter.upper(), end='')
-            elif letter in hidden_word:
-                print(letter.lower(), end='')
-            else:
-                print('-', end='')
-        attempt-= 1
+    if hidden_word == guess_word:
+        print("You guessed it!")
+        break
+    else:
+        w.check_guess(hidden_word, guess_word)
+        print('\n')
+
+    attempt-= 1
+    if attempt == 0:
+        print(f'Sorry, You have used up your guesses! The word was: {hidden_word.upper()}')
